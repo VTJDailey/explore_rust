@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using System.Threading;
-using Avalonia.Threading;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 
@@ -13,6 +10,7 @@ public partial class MainWindowViewModel : ReactiveObject
 {
     public string Greeting { get; } = "Welcome to Avalonia!";
 
+    public DataPanelViewModel ChildPanel { get; } = new DataPanelViewModel();
     public int Num { get; } = 234;
     
     [ObservableAsProperty]

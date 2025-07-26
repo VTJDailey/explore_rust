@@ -14,7 +14,7 @@ mod tests {
 
 
     #[test]
-    fn bad_terst() {
+    fn bad_test() {
         let result = add_five(1023);
         assert_eq!(result, 1029);
     }

@@ -18,7 +18,7 @@
     <StackPanel Orientation="Vertical">
         <TextBlock Text="{Binding Num}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="{Binding Time}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        
+        <ContentControl Content="{Binding ChildPanel}"></ContentControl>
     </StackPanel>
     
 
