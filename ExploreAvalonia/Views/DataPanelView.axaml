@@ -12,6 +12,6 @@
     <StackPanel Orientation="Vertical">
         <TextBlock>Data Panel</TextBlock>
         <TextBox x:Name="EntryTextBox" Text="{Binding Entry}"/>
-        
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Output}"/>
     </StackPanel>
 </UserControl>

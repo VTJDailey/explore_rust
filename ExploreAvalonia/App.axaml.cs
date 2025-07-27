@@ -7,6 +7,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using ExploreAvalonia.ViewModels;
 using ExploreAvalonia.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ExploreAvalonia;
 
@@ -15,6 +16,7 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -24,9 +26,17 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             // DisableAvaloniaDataAnnotationValidation();
+
+            var container = new ServiceCollection();
+            Registration.Register(container);
+
+            var services = container.BuildServiceProvider();
+
+            
+            
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = services.GetRequiredService<IMainWindowViewModel>(),
             };
         }
 

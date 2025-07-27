@@ -6,19 +6,25 @@ using ReactiveUI.SourceGenerators;
 
 namespace ExploreAvalonia.ViewModels;
 
-public partial class MainWindowViewModel : ReactiveObject
+public interface IMainWindowViewModel : IReactiveObject
+{
+    
+}
+
+public partial class MainWindowViewModel : ReactiveObject, IMainWindowViewModel
 {
     public string Greeting { get; } = "Welcome to Avalonia!";
 
-    public DataPanelViewModel ChildPanel { get; } = new DataPanelViewModel();
+    public IDataPanelViewModel ChildPanel { get; }
     public int Num { get; } = 234;
     
     [ObservableAsProperty]
     private string _time = "";
     
-    public MainWindowViewModel()
+    public MainWindowViewModel(DataPanelViewModelFactory panelFactory)
     {
         Debug.WriteLine("Test Startup");
+        ChildPanel = panelFactory();
         _timeHelper =
             Observable.Timer(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1),
                     RxApp.TaskpoolScheduler)

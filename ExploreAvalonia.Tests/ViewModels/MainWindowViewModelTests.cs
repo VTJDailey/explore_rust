@@ -1,5 +1,6 @@
 ﻿using ExploreAvalonia.ViewModels;
 using Microsoft.Reactive.Testing;
+using Moq;
 using ReactiveUI.Testing;
 
 namespace ExploreAvalonia.Tests.ViewModels;
@@ -16,7 +17,9 @@ public class MainWindowViewModelTests
     {
         new TestScheduler().With(s =>
         {
-            var vm = new MainWindowViewModel();
+            var mockPanel = new Mock<IDataPanelViewModel>();
+            var panelFactory = new DataPanelViewModelFactory(() => mockPanel.Object);
+            var vm = new MainWindowViewModel(panelFactory);
 
             Assert.That(vm.Time, Is.EqualTo(""));
             
