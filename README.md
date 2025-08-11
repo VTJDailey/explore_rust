@@ -12,6 +12,10 @@
 - Get comfortable with JetBrains tooling.
 - Learn Direct3D (11?  12?), operate from rust, show in Windows Avalonia
 
+# 8/10/2025
+Getting cross language compilation.  Triggering rust compiler from Rider C# environment.
+Using a reusable targets file for triggering cargo, and use of DisableFastUpToDateCheck to ensure
+that the build always runs (this could likely be improved further)
 
 # 7/26/2025
 - Skeleton Avalonia app created

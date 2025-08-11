@@ -10,6 +10,17 @@
     <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
     <TrimMode>link</TrimMode>
   </PropertyGroup>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  <Target Name="PrepareNative" BeforeTargets="PreBuildEvent">
+      <MSBuild Projects="..\rust.targets" Targets="Cargo" Properties="CargoPackage=test_library;CargoWorkspacePath=$(MSBuildThisFileDirectory)..\test_library" />
+<!--      <MSBuild Projects="..\rust.targets" Targets="Cargo" Properties="CargoPackage=test_binary;CargoWorkspacePath=$(MSBuildThisFileDirectory)..\test_binary" />-->
+  </Target>
+
+  <Target Name="MyAfter" AfterTargets="Build">
+    <Message Text="IT IS AFTER THE BUILD" Importance="high" />
+  </Target>
 
   <ItemGroup>
     <Folder Include="Models\" />
@@ -41,4 +52,5 @@
     </PackageReference>
     <PackageReference Include="System.Reactive" Version="6.0.1" />
   </ItemGroup>
+  
 </Project>

@@ -12,6 +12,7 @@ public interface IDataPanelViewModel : IReactiveObject
 
 public partial class DataPanelViewModel : ReactiveObject, IDataPanelViewModel
 {
+    
     [Reactive] private string _entry = "";
     [ObservableAsProperty] private string _output = "";
     public DataPanelViewModel()

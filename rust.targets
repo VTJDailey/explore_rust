@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    
+    <!-- Requires CargoPackage and CargoWorkspacePath -->
+
+        <Target Name="Cargo" BeforeTargets="Build">
+            <Message Text="****************** $(CargoPackage) ||| $(CargoWorkspacePath) " Importance="high" />
+            <Exec Command="cargo build" WorkingDirectory="$(CargoWorkspacePath)" />
+
+<!--            WorkingDirectory="$(CargoWorkspacePath)"-->
+        </Target>
+
+    <!-- Compile-time RIDs -->
+<!--    <PropertyGroup Condition=" '$(NativeRid)' == 'win-x64' Or ('$(NativeRid)' == '' And '$([MSBuild]::IsOsPlatform(`WINDOWS`))' == 'true') ">-->
+<!--        <IsWindows>true</IsWindows>-->
+<!--        <DefineConstants>$(DefineConstants);WINDOWS</DefineConstants>-->
+<!--    </PropertyGroup>-->
+
+    <!-- Cargo configuration -->
+    
+<!--    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">-->
+<!--        <CargoConfiguration>debug</CargoConfiguration>-->
+<!--        <CargoExtension>dll</CargoExtension>-->
+<!--    </PropertyGroup>-->
+<!--    <PropertyGroup Condition=" '$(Configuration)' != 'Debug' ">-->
+<!--        <CargoConfiguration>release</CargoConfiguration>-->
+<!--        <CargoExtension>lib</CargoExtension>-->
+<!--    </PropertyGroup>-->
+<!--    -->
+<!--    <PropertyGroup>-->
+<!--        <CargoTargetPath>$(MSBuildThisFileDirectory)/../target</CargoTargetPath>-->
+<!--        <CargoTarget>x86_64-pc-windows-msvc</CargoTarget>-->
+
+
+<!--        <CargoArtifact>$(CargoPackage).$(CargoExtension)</CargoArtifact>-->
+
+<!--        <CargoArtifactPath>$(CargoWorkspacePath)/target/$(CargoTarget)/$(CargoConfiguration)/$(CargoArtifact)</CargoArtifactPath>-->
+<!--    </PropertyGroup>-->
+
+<!--    <ItemGroup>-->
+<!--        <CargoChannelArg Condition=" '$(CargoChannel)' != '' " Include="+$(CargoChannel)" />-->
+<!--        <CargoBuildArg Include="&#45;&#45;target $(CargoTarget)" />-->
+<!--        <CargoBuildArg Condition=" '$(CargoConfiguration)' == 'release' " Include="&#45;&#45;release" />-->
+<!--    </ItemGroup>-->
+
+<!--    <Target Name="Cargo" BeforeTargets="Build">-->
+<!--        <Exec Command="cargo @(CargoChannelArg, ' ') build @(CargoBuildArg, ' ')" WorkingDirectory="$(CargoWorkspacePath)" />-->
+<!--    </Target>-->
+
+
+</Project>
